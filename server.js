@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const server = require('http').createServer(app);
+const server = require('https').createServer(app);
 const io = socketIO(server);
 shared.io = io;
 
@@ -42,7 +42,7 @@ io.on('connection', socket => {
 
 app.use('/', require('./src/routes'));
 
-server.listen(8081, () => {
+server.listen(process.env.PORT, () => {
     console.log("Listening on port heroku");
     mongoDB.connect();
 });
