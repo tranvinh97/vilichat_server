@@ -42,7 +42,7 @@ io.on('connection', socket => {
 
 app.use('/', require('./src/routes'));
 
-server.listen('8081', () => {
-    console.log("Listening on port 8081");
+server.listen(process.env.PORT, () => {
+    console.log("Listening on port heroku");
     mongoDB.connect();
 });
