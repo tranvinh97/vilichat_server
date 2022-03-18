@@ -61,7 +61,7 @@ class UserController {
             }
             const user = await UserRepository.findByUsername(username);
             if (!user){
-                return res.json({ error: true, errorMessage: "username or password is invalid" });
+                return res.json({ error: true, errorMessage: "username not exist" });
             }
             if (!await bcrypt.compare(password, user.password)){
                 return res.json({ error: true, errorMessage: "username or password is invalid" });
